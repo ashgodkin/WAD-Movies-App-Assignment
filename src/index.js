@@ -6,10 +6,12 @@ import MoviePage from "./pages/movieDetailsPage";
 import FavouriteMoviesPage from "./pages/favouriteMoviesPage";
 import {Link} from 'react-router-dom'
 import MovieReviewPage from "./pages/movieReviewPage";
+import SiteHeader from "./components/siteHeader";
 
 const App = () => {
   return (
     <BrowserRouter>
+      <SiteHeader /> {/*New Header */}
       <ul>
         <li>
           <Link to="/">Home</Link>
