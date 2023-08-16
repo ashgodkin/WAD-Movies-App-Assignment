@@ -6,6 +6,8 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import HomeIcon from "@mui/icons-material/Home";
 import { useNavigate } from "react-router-dom";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import Avatar from '@mui/material/Avatar'
 
 const MovieHeader = (props) => {
   const movie = props.movie;
@@ -25,6 +27,16 @@ const MovieHeader = (props) => {
       <IconButton aria-label="go back" onClick={() => navigate(-1)} >
         <ArrowBackIcon color="primary" fontSize="large" />
       </IconButton>
+
+      <FavoriteIcon>
+      avatar={
+          movie.favourite ? (
+            <Avatar sx={{ backgroundColor: 'red'}}>
+              <FavoriteIcon />
+            </Avatar>
+          ) : null
+          }
+        </FavoriteIcon>
 
       <Typography variant="h4" component="h3">
         {movie.title}

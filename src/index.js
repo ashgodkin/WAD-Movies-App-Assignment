@@ -30,9 +30,9 @@ const App = () => {
       <SiteHeader />
       <MoviesContextProvider>
       <Routes>
-        <Route exact path="/reviews/form" element={<AddMovieReviewPage/>} />
-        <Route path="/movies/upcoming" element={ <UpcomingMoviesPage /> } />
-        <Route path="/reviews/:id" element={ <MovieReviewPage /> } />
+        <Route path="/reviews/form" element={<AddMovieReviewPage/>} />
+        <Route path="/movies/upcoming" element={<UpcomingMoviesPage /> } />
+        <Route path="/reviews/:id" element={<MovieReviewPage /> } />
         <Route exact path="/movies/favourites" element={<FavouriteMoviesPage />} />
         <Route path="/movies/:id" element={<MoviePage />} />
         <Route path="/" element={<HomePage />} />
