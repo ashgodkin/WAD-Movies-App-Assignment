@@ -5,6 +5,8 @@ import HomePage from "./pages/homePage";
 import MoviePage from "./pages/movieDetailsPage";
 import FavouriteMoviesPage from "./pages/favouriteMoviesPage";
 import UpcomingMoviesPage from "./pages/upcomingMoviesPage";
+import ActorsPage from "./pages/actorsPage";
+import ActorDetailsPage from "./pages/actorDetailsPage";
 import {Link} from 'react-router-dom'
 import MovieReviewPage from "./pages/movieReviewPage";
 import SiteHeader from "./components/siteHeader";
@@ -31,6 +33,8 @@ const App = () => {
       <MoviesContextProvider>
       <Routes>
         <Route path="/reviews/form" element={<AddMovieReviewPage/>} />
+        <Route path="/actors/:id" element={<ActorDetailsPage/>} />
+        <Route path="/actors" element={<ActorsPage /> } />
         <Route path="/movies/upcoming" element={<UpcomingMoviesPage /> } />
         <Route path="/reviews/:id" element={<MovieReviewPage /> } />
         <Route exact path="/movies/favourites" element={<FavouriteMoviesPage />} />
