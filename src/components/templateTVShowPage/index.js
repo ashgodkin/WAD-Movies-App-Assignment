@@ -1,16 +1,16 @@
 import React from "react"; //useState/useEffect redundant
-import ActorHeader from "../headerActor";
+import TVShowHeader from "../headerTVShow";
 import Grid from "@mui/material/Grid";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
-import { getActorImages } from "../../api/tmdb-api";
+import { getTVShowImages } from "../../api/tmdb-api";
 import { useQuery } from "react-query";
 import Spinner from '../spinner'
 
-const TemplateActorPage = ({ actor, children }) => {
+const TemplateTVShowPage = ({ tvShow, children }) => {
   const { data , error, isLoading, isError } = useQuery(
-    ["images", { id: actor.id }],
-    getActorImages
+    ["images", { id: tvShow.id }],
+    getTVShowImages
   );
 
   if (isLoading) {
@@ -20,11 +20,11 @@ const TemplateActorPage = ({ actor, children }) => {
   if (isError) {
     return <h1>{error.message}</h1>;
   }
-  const images = data.profiles 
+  const images = data.posters 
 
   return (
     <>
-      <ActorHeader actor={actor} />
+      <TVShowHeader tvShow={tvShow} />
 
       <Grid container spacing={5} sx={{ padding: "15px" }}>
         <Grid item xs={3}>
@@ -55,4 +55,4 @@ const TemplateActorPage = ({ actor, children }) => {
   );
 };
 
-export default TemplateActorPage;
+export default TemplateTVShowPage;

@@ -7,13 +7,17 @@ import FavouriteMoviesPage from "./pages/favouriteMoviesPage";
 import UpcomingMoviesPage from "./pages/upcomingMoviesPage";
 import ActorsPage from "./pages/actorsPage";
 import ActorDetailsPage from "./pages/actorDetailsPage";
+import TVShowsPage from "./pages/tvShowsPage";
+import TVShowDetailsPage from "./pages/tvShowDetailsPage";
 import {Link} from 'react-router-dom'
 import MovieReviewPage from "./pages/movieReviewPage";
+import TVShowReviewPage from "./pages/tvShowReviewPage";
 import SiteHeader from "./components/siteHeader";
 import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from 'react-query/devtools'
 import MoviesContextProvider from "./contexts/moviesContext";
 import AddMovieReviewPage from './pages/addMovieReviewPage'
+import TrendingMoviesPage from "./pages/trendingMovies";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -33,6 +37,9 @@ const App = () => {
       <MoviesContextProvider>
       <Routes>
         <Route path="/reviews/form" element={<AddMovieReviewPage/>} />
+        <Route path="/movies/trending" element={<TrendingMoviesPage/>} />
+        <Route path="/tvshows/:id" element={<TVShowDetailsPage/>} />
+        <Route path="/tvshows" element={<TVShowsPage/>} />
         <Route path="/actors/:id" element={<ActorDetailsPage/>} />
         <Route path="/actors" element={<ActorsPage /> } />
         <Route path="/movies/upcoming" element={<UpcomingMoviesPage /> } />

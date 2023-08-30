@@ -1,17 +1,17 @@
 import React, { useState } from "react";
-import Header from "../headerMovieList";
-import FilterCard from "../filterMoviesCard";
-import MovieList from "../movieList";
+import Header from "../headerTVShowList";
+import FilterCard from "../filterTVShowsCard";
+import TVShowList from "../tvShowList";
 import Grid from "@mui/material/Grid";
 
-function MovieListPageTemplate({ movies, title, selectFavourite }) {
+function TVShowListPageTemplate({ tvShows, title, action }) {
   const [nameFilter, setNameFilter] = useState("");
   const [genreFilter, setGenreFilter] = useState("0");
   const genreId = Number(genreFilter);
 
-  let displayedMovies = movies
+  let displayedTVShows = tvShows
     .filter((m) => {
-      return m.title?.toLowerCase().search(nameFilter.toLowerCase()) !== -1;
+      return m.title.toLowerCase().search(nameFilter.toLowerCase()) !== -1;
     })
     .filter((m) => {
       return genreId > 0 ? m.genre_ids.includes(genreId) : true;
@@ -35,9 +35,8 @@ function MovieListPageTemplate({ movies, title, selectFavourite }) {
             genreFilter={genreFilter}
           />
         </Grid>
-        <MovieList selectFavourite={selectFavourite} movies={displayedMovies}></MovieList>
-      </Grid>
+        <TVShowList action={action} tvShows={displayedTVShows}></TVShowList>      </Grid>
     </Grid>
   );
 }
-export default MovieListPageTemplate;
+export default TVShowListPageTemplate;

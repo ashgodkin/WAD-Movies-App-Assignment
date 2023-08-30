@@ -17,7 +17,7 @@ import Avatar from '@mui/material/Avatar'
 import { MoviesContext } from "../../contexts/moviesContext";
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 
-export default function MovieCard({ movie, action }) {
+export default function MovieCard({ movie, action, fetchUrl }) {
   const { favourites, addToFavourites } = useContext(MoviesContext);
   const { watchList, addToWatchList } = useContext(MoviesContext);
  
@@ -81,7 +81,6 @@ export default function MovieCard({ movie, action }) {
         </Grid>
       </CardContent>
       <CardActions disableSpacing>
-    {action(movie)}
     <Link to={`/movies/${movie.id}`}>
       <Button variant="outlined" size="medium" color="primary">
         More Info ...

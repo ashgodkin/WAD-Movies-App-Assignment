@@ -11,7 +11,7 @@ function ActorListPageTemplate({ actors, title, action }) {
 
   let displayedActors = actors
     .filter((m) => {
-      return m.name.toLowerCase().search(titleFilter.toLowerCase()) !== -1;
+      return m.name?.toLowerCase().search(titleFilter.toLowerCase()) !== -1;
     })
     .filter((m) => {
       return genreId > 0 ? m.genre_ids.includes(genreId) : true;
