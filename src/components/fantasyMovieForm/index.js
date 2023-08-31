@@ -21,7 +21,7 @@ const formControl =
     backgroundColor: "rgb(255, 255, 255)"
   };
 
-  export default function FilterTVShowsCard(props) {
+  export default function FiltCard(props) {
     const { data, error, isLoading, isError } = useQuery("genres", getGenres);
   
     if (isLoading) {
@@ -53,19 +53,18 @@ const formControl =
     <Card 
       sx={{
         maxWidth: 345,
-        backgroundColor: "rgb(2114, 134, 57)"
+        backgroundColor: "rgb(114, 134, 57)"
       }} 
       variant="outlined">
       <CardContent>
         <Typography variant="h5" component="h1">
-          <SearchIcon fontSize="large" />
-          Filter the shows.
+          Create your fantasy movie.
         </Typography>
         <TextField
           sx={formControl}
-          id="filled-search"
-          label="Search field"
-          type="search"
+          id="movie-name"
+          label="Movie Name"
+          type="input"
           variant="filled"
           value={props.titleFilter}
           onChange={handleTextChange}
@@ -88,6 +87,15 @@ const formControl =
             })}
           </Select>
         </FormControl>
+        <TextField
+          sx={formControl}
+          id="actor-name"
+          label="Actor Name"
+          type="input"
+          variant="filled"
+          value={props.titleFilter}
+          onChange={handleTextChange}
+        />
       </CardContent>
       <CardMedia
         sx={{ height: 300 }}
@@ -97,7 +105,7 @@ const formControl =
       <CardContent>
         <Typography variant="h5" component="h1">
           <SearchIcon fontSize="large" />
-          Filter the shows.
+          Filter the movies.
           <br />
         </Typography>
       </CardContent>
