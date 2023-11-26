@@ -53,13 +53,13 @@ const formControl =
     <Card 
       sx={{
         maxWidth: 345,
-        backgroundColor: "rgb(114, 134, 57)"
+        backgroundColor: "rgb(59, 68, 75)"
       }} 
       variant="outlined">
       <CardContent>
         <Typography variant="h5" component="h1">
-          <SearchIcon fontSize="large" />
-          Filter the movies.
+          <SearchIcon fontSize="medium" />
+          SEARCH MOVIES
         </Typography>
         <TextField
           sx={formControl}
@@ -88,6 +88,7 @@ const formControl =
             })}
           </Select>
         </FormControl>
+
       </CardContent>
       <CardMedia
         sx={{ height: 300 }}
@@ -96,8 +97,8 @@ const formControl =
       />
       <CardContent>
         <Typography variant="h5" component="h1">
-          <SearchIcon fontSize="large" />
-          Filter the movies.
+          <SearchIcon fontSize="medium" />
+          SEARCH MOVIES
           <br />
         </Typography>
       </CardContent>

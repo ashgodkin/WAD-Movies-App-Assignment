@@ -81,12 +81,15 @@ export default function MovieCard({ movie, action, fetchUrl }) {
         </Grid>
       </CardContent>
       <CardActions disableSpacing>
-    <Link to={`/movies/${movie.id}`}>
-      <Button variant="outlined" size="medium" color="primary">
-        More Info ...
-      </Button>
-    </Link>
-    <Button variant="h6" size="medium" color="primary">
+        <IconButton aria-label="add to favorites" onClick={null}>
+          <FavoriteIcon color="primary" fontSize="large" />
+        </IconButton>
+        <Link to={`/movies/${movie.id}`}>
+         <Button variant="outlined" size="medium" color="primary">
+            More Info ...
+        </Button>
+        </Link>
+          <Button variant="h6" size="medium" color="primary">
         <PlaylistAddIcon fontSize="small"/>
       </Button>
   </CardActions>

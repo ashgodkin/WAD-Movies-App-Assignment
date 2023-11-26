@@ -14,16 +14,22 @@ import Grid from "@mui/material/Grid";
 import img from '../../images/film-poster-placeholder.png'
 import { Link } from "react-router-dom";
 import Avatar from '@mui/material/Avatar'
-import { TVShowsContext } from "../../contexts/tvShowsContext";
+import { MoviesContext } from "../../contexts/moviesContext";
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 
-export default function TVShowCard({ tvShow, action }) {
-  const { favourites, addToFavourites } = useContext(TVShowsContext);
+export default function TVShowCard({ tvShow, action, fetchUrl }) {
+  const { favourites, addToFavourites } = useContext(MoviesContext);
+  const { watchList, addToWatchList } = useContext(MoviesContext);
  
    if (favourites.find((id) => id === tvShow.id)) {tvShow.favourite = true;
    }
    else {tvShow.favourite = false;
   }
+
+     if (watchList?.find((id) => id === tvShow.id)) {tvShow.mustWatch = true;
+     }
+     else {tvShow.mustWatch = false;
+     }
 
   return (
     <Card sx={{ maxWidth: 345 }}>
@@ -45,7 +51,7 @@ export default function TVShowCard({ tvShow, action }) {
           
           title={
             <Typography variant="h5" component="p">
-              {tvShow.title}{" "}
+              {tvShow.name}{" "}
             </Typography>
           }
       />

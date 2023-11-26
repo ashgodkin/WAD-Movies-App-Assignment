@@ -27,7 +27,12 @@ const ActorHeader = (props) => {
       <IconButton aria-label="go back" onClick={() => navigate(-1)} >
         <ArrowBackIcon color="primary" fontSize="large" />
       </IconButton>
-
+      <Typography variant="h4" component="h3">
+        {actor.name}
+        <a href={actor.homepage}>
+          <HomeIcon color="primary" />
+        </a>
+      </Typography>
       <FavoriteIcon>
       avatar={
           actor.favourite ? (
@@ -37,15 +42,6 @@ const ActorHeader = (props) => {
           ) : null
           }
         </FavoriteIcon>
-
-      <Typography variant="h4" component="h3">
-        {actor.title}
-        <a href={actor.homepage}>
-          <HomeIcon color="primary" />
-        </a>
-        <br />
-        <span sx={{ fontSize: "1.5rem" }}>{`   "${actor.tagline}"`} </span>
-      </Typography>
 
       <IconButton aria-label="go forward" onClick={() => navigate(+1) } >
         <ArrowForwardIcon color="primary" fontSize="large" />

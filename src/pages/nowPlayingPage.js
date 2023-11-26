@@ -1,14 +1,14 @@
 import React from "react";
-import PageTemplate from '../components/templateTVShowPage'
-import { getTVShows } from "../api/tmdb-api";
+import PageTemplate from '../components/templateMovieListPage'
+import { getNowPlaying } from "../api/tmdb-api";
 import { useQuery } from 'react-query';
 import Spinner from '../components/spinner';
 import AddToFavouritesIcon from "../components/cardIcons/addToFavourites";
 
 
-const TVShowsPage = (props) => {
+const NowPlayingPage = (props) => {
 
-  const {  data, error, isLoading, isError }  = useQuery('trending', getTVShows)
+  const {  data, error, isLoading, isError }  = useQuery('now_playing', getNowPlaying)
 
   if (isLoading) {
     return <Spinner />
@@ -17,21 +17,21 @@ const TVShowsPage = (props) => {
   if (isError) {
     return <h1>{error.message}</h1>
   }  
-  const tvShows = data.results;
+  const movies = data.results;
 
   // Redundant, but necessary to avoid app crashing.
-  const favourites = tvShows.filter(m => m.favourite)
+  const favourites = movies.filter(m => m.favourite)
   localStorage.setItem('favourites', JSON.stringify(favourites))
   const addToFavourites = (movieId) => true 
 
   return (
     <PageTemplate
-      title="TV Shows"
-      tvShows={tvShows}
-      action={(tvShow) => {
-        return <AddToFavouritesIcon tvShow={tvShow} />
+      title="Now Playing"
+      movies={movies}
+      action={(movie) => {
+        return <AddToFavouritesIcon movie={movie} />
       }}
     />
   );
 };
-export default TVShowsPage;
+export default NowPlayingPage;

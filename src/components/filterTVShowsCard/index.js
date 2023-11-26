@@ -53,13 +53,13 @@ const formControl =
     <Card 
       sx={{
         maxWidth: 345,
-        backgroundColor: "rgb(2114, 134, 57)"
+        backgroundColor: "rgb(59, 68, 75)"
       }} 
       variant="outlined">
       <CardContent>
         <Typography variant="h5" component="h1">
-          <SearchIcon fontSize="large" />
-          Filter the shows.
+          <SearchIcon fontSize="medium" />
+          SEARCH SERIES
         </Typography>
         <TextField
           sx={formControl}
@@ -67,7 +67,7 @@ const formControl =
           label="Search field"
           type="search"
           variant="filled"
-          value={props.titleFilter}
+          value={props.nameFilter}
           onChange={handleTextChange}
         />
         <FormControl sx={formControl}>
@@ -96,8 +96,8 @@ const formControl =
       />
       <CardContent>
         <Typography variant="h5" component="h1">
-          <SearchIcon fontSize="large" />
-          Filter the shows.
+          <SearchIcon fontSize="medium" />
+          SEARCH SERIES
           <br />
         </Typography>
       </CardContent>

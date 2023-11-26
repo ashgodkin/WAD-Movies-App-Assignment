@@ -9,6 +9,10 @@ import Fab from "@mui/material/Fab";
 import Typography from "@mui/material/Typography";
 import Drawer from "@mui/material/Drawer";
 import MovieReviews from "../movieReviews";
+import { getRecommendedMovies} from "../../api/tmdb-api";
+import { Link } from "react-router-dom";
+import Button from "@mui/material/Button";
+import SimilarMovies from "../similarMovies";
 
 const root = {
     display: "flex",
@@ -34,6 +38,7 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
         {movie.overview}
       </Typography>
 
+      <div>
       <Paper 
         component="ul" 
         sx={root}
@@ -72,6 +77,22 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
           </li>
         ))}
       </Paper>
+      <Paper 
+        component="ul" 
+        sx={root}
+      >
+        <li>
+          <Chip label="Production Companies" sx={chip} color="primary" />
+        </li>
+        {movie.production_companies.map((c) => (
+          <li key={c.name}>
+            <Chip label={c.name} sx={chip} />
+          </li>
+        ))}
+      </Paper>
+      </div>
+
+
       <Fab
         color="secondary"
         variant="extended"
@@ -88,7 +109,26 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
       <Drawer anchor="top" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
         <MovieReviews movie={movie} />
       </Drawer>
+
+      <Fab
+        color="secondary"
+        variant="extended"
+        onClick={() =>setDrawerOpen(true)}
+        sx={{
+          position: 'fixed',
+          bottom: '1em',
+          right: '11em'
+        }}
+      >
+        <NavigationIcon />
+        Similar Movies
+      </Fab>
+      <Drawer anchor="bottom" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
+        <SimilarMovies movie={movie} />
+      </Drawer>
+
       </>
+      
   );
 };
 export default MovieDetails ;

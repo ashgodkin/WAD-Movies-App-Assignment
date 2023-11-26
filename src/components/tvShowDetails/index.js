@@ -9,6 +9,7 @@ import Fab from "@mui/material/Fab";
 import Typography from "@mui/material/Typography";
 import Drawer from "@mui/material/Drawer";
 import TVShowReviews from "../tvShowReviews";
+import RecommendedTV from "../recommendedTV";
 
 const root = {
     display: "flex",
@@ -48,16 +49,24 @@ const TVShowDetails = ({ tvShow }) => {  // Don't miss this!
         ))}
       </Paper>
       <Paper component="ul" sx={root}>
-        <Chip icon={<AccessTimeIcon />} label={`${tvShow.runtime} min.`} />
-        <Chip
-          icon={<MonetizationIcon />}
-          label={`${tvShow.revenue.toLocaleString()}`}
-        />
         <Chip
           icon={<StarRate />}
           label={`${tvShow.vote_average} (${tvShow.vote_count}`}
         />
-        <Chip label={`Released: ${tvShow.release_date}`} />
+        <Chip label={`First Air Date: ${tvShow.first_air_date}`} />
+      </Paper>
+      <Paper 
+        component="ul" 
+        sx={root}
+      >
+        <li>
+          <Chip label="Seasons" sx={chip} color="primary" />
+        </li>
+        {tvShow.seasons.map((c) => (
+          <li key={c.name}>
+            <Chip label={c.name} sx={chip} />
+          </li>
+        ))}
       </Paper>
       <Paper 
         component="ul" 
@@ -67,6 +76,19 @@ const TVShowDetails = ({ tvShow }) => {  // Don't miss this!
           <Chip label="Production Countries" sx={chip} color="primary" />
         </li>
         {tvShow.production_countries.map((c) => (
+          <li key={c.name}>
+            <Chip label={c.name} sx={chip} />
+          </li>
+        ))}
+      </Paper>
+      <Paper 
+        component="ul" 
+        sx={root}
+      >
+        <li>
+          <Chip label="Production Companies" sx={chip} color="primary" />
+        </li>
+        {tvShow.production_companies.map((c) => (
           <li key={c.name}>
             <Chip label={c.name} sx={chip} />
           </li>
@@ -88,6 +110,24 @@ const TVShowDetails = ({ tvShow }) => {  // Don't miss this!
       <Drawer anchor="top" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
         <TVShowReviews tvShow={tvShow} />
       </Drawer>
+
+      <Fab
+        color="secondary"
+        variant="extended"
+        onClick={() =>setDrawerOpen(true)}
+        sx={{
+          position: 'fixed',
+          bottom: '1em',
+          right: '10em'
+        }}
+      >
+        <NavigationIcon />
+        Recommended TV
+      </Fab>
+      <Drawer anchor="top" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
+        <RecommendedTV tvShow={tvShow} />
+      </Drawer>
+
       </>
   );
 };

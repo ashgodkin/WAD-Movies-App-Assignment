@@ -1,25 +1,20 @@
 import React, { useState } from "react";
 import Header from "../headerMovieList";
-import FilterCard from "../filterMoviesCard";
+import FilterCard from "../filterActorsCard";
 import ActorList from "../actorList";
 import Grid from "@mui/material/Grid";
+import { AccountTreeSharp } from "@mui/icons-material";
 
 function ActorListPageTemplate({ actors, title, action }) {
-  const [titleFilter, setTitleFilter] = useState("");
-  const [genreFilter, setGenreFilter] = useState("0");
-  const genreId = Number(genreFilter);
+  const [nameFilter, setNameFilter] = useState("");
 
   let displayedActors = actors
     .filter((m) => {
-      return m.name?.toLowerCase().search(titleFilter.toLowerCase()) !== -1;
-    })
-    .filter((m) => {
-      return genreId > 0 ? m.genre_ids.includes(genreId) : true;
+      return m.name.toLowerCase().search(nameFilter.toLowerCase()) !== -1;
     });
 
   const handleChange = (type, value) => {
-    if (type === "name") setTitleFilter(value);
-    else setGenreFilter(value);
+    if (type === "name") setNameFilter(value);
   };
 
   return (
@@ -31,11 +26,14 @@ function ActorListPageTemplate({ actors, title, action }) {
         <Grid key="find" item xs={12} sm={6} md={4} lg={3} xl={2}>
           <FilterCard
             onUserInput={handleChange}
-            titleFilter={titleFilter}
-            genreFilter={genreFilter}
+            titleFilter={nameFilter}
           />
         </Grid>
-        <ActorList action={action} actors={displayedActors}></ActorList>      </Grid>
+        <ActorList
+        action={action}
+        actors={displayedActors} 
+        ></ActorList>
+      </Grid>
     </Grid>
   );
 }

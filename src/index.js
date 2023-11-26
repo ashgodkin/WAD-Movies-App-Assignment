@@ -16,9 +16,10 @@ import SiteHeader from "./components/siteHeader";
 import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from 'react-query/devtools'
 import MoviesContextProvider from "./contexts/moviesContext";
+import ActorsContextProvider from "./contexts/actorsContext";
 import AddMovieReviewPage from './pages/addMovieReviewPage'
 import TrendingMoviesPage from "./pages/trendingMovies";
-import FantasyMoviePage from "./pages/fantasyMoviePage";
+import NowPlayingPage from "./pages/nowPlayingPage";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -35,16 +36,17 @@ const App = () => {
     <QueryClientProvider client={queryClient}>
     <BrowserRouter>
       <SiteHeader />
+      <ActorsContextProvider>
       <MoviesContextProvider>
       <Routes>
         <Route path="/reviews/form" element={<AddMovieReviewPage/>} />
-        <Route path="/fantasymovie" element={<FantasyMoviePage/>} />
         <Route path="/movies/trending" element={<TrendingMoviesPage/>} />
-        <Route path="/tvshows/:id" element={<TVShowDetailsPage/>} />
-        <Route path="/tvshows" element={<TVShowsPage/>} />
+        <Route path="/actors/popular" element={<ActorsPage/>} />
         <Route path="/actors/:id" element={<ActorDetailsPage/>} />
-        <Route path="/actors" element={<ActorsPage /> } />
+        <Route path="/tvshows/trending" element={<TVShowsPage/>} />
+        <Route path="/tvshows/:id" element={<TVShowDetailsPage/>} />
         <Route path="/movies/upcoming" element={<UpcomingMoviesPage /> } />
+        <Route path="/movies/now_playing" element={<NowPlayingPage />} />
         <Route path="/reviews/:id" element={<MovieReviewPage /> } />
         <Route exact path="/movies/favourites" element={<FavouriteMoviesPage />} />
         <Route path="/movies/:id" element={<MoviePage />} />
@@ -52,6 +54,7 @@ const App = () => {
         <Route path="*" element={ <Navigate to="/" /> } />
         </Routes>
         </MoviesContextProvider>
+        </ActorsContextProvider>
       </BrowserRouter>
       <ReactQueryDevtools initialIsOpen={false}
     />

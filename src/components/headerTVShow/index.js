@@ -39,7 +39,7 @@ const TVShowHeader = (props) => {
         </FavoriteIcon>
 
       <Typography variant="h4" component="h3">
-        {tvShow.title}
+        {tvShow.name}
         <a href={tvShow.homepage}>
           <HomeIcon color="primary" />
         </a>

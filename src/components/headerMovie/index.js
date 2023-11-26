@@ -19,6 +19,7 @@ const MovieHeader = (props) => {
         sx={{
             display: "flex",
             justifyContent: "space-around",
+            alignItems: "center",
             flexWrap: "wrap",
             padding: 1.5,
             margin: 0,

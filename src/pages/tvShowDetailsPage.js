@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from 'react-router-dom';
 import TVShowDetails from "../components/tvShowDetails/";
-import PageTemplate from "../components/templateTVShowPage";
+import PageTemplate from "../components/templateTVShowListPage";
 // import useMovie from "../hooks/useMovie";   Redundant
 import { getTVShow } from '../api/tmdb-api'
 import { useQuery } from "react-query";
